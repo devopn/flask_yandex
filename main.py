@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -18,5 +18,12 @@ def image_mars():
 def promotion_image():
     return render_template("promotion_image.html")
 
+@app.route("/astronaut_selection", methods=["GET", "POST"])
+def astronaut_selection():
+    if request.method == "POST":
+        pass
+    else:
+        return render_template("astronaut_selection.html")
+
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=8080)
+    app.run(host="127.0.0.1", port=8089)
