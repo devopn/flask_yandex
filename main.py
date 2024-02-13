@@ -30,6 +30,10 @@ def astronaut_selection():
         return render_template("astronaut_selection.html", name=name, surname=surname, email=email, class_=class_, profession=profession)
     else:
         return render_template("astronaut_selection.html")
+    
+@app.route("/choice/<planet>")
+def choice(planet):
+    return render_template("choice.html", planet=planet)
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=8089)
