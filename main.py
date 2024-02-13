@@ -21,7 +21,13 @@ def promotion_image():
 @app.route("/astronaut_selection", methods=["GET", "POST"])
 def astronaut_selection():
     if request.method == "POST":
-        pass
+        name = request.form["name"]
+        surname = request.form["surname"]
+        email = request.form["email"]
+        class_ = request.form["class"]
+        print(name, surname, email, class_)
+        profession = request.form.getlist("profession")
+        return render_template("astronaut_selection.html", name=name, surname=surname, email=email, class_=class_, profession=profession)
     else:
         return render_template("astronaut_selection.html")
 
