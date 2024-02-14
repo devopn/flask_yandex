@@ -39,5 +39,9 @@ def choice(planet):
 def results(nickname, level, rating):
     return render_template("results.html", nickname=nickname, level=level, rating=rating)   
 
+@app.route("/carousel")
+def carousel():
+    return render_template("carousel.html")
+
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=8089)
