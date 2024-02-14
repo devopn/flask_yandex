@@ -54,6 +54,14 @@ def training(prof:str):
     else:
         return render_template("train.html", prof=0, par="Научные симуляторы")
 
+@app.route("/list_prof/", defaults={"listT":None})
+@app.route("/list_prof/<listT>")
+def list_prof(listT):
+    if listT in ["ol", "ul"]:
+        return render_template("prof.html", list=listT)
+    else:
+        return "<b style='font-size:100px;'>BAD PARAMETER<b>"
+
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=8086)
