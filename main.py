@@ -43,5 +43,9 @@ def results(nickname, level, rating):
 def carousel():
     return render_template("carousel.html")
 
+@app.route("/index/<par>")
+def index_par(par):
+    return render_template("base.html", par=par)
+
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=8089)
+    app.run(host="127.0.0.1", port=8086)
