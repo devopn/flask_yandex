@@ -47,5 +47,13 @@ def carousel():
 def index_par(par):
     return render_template("base.html", par=par)
 
+@app.route("/training/<prof>")
+def training(prof:str):
+    if ("инженер" in prof.lower()) or ("строитель" in prof.lower()):
+        return render_template("train.html", prof=1, par="Инженерные тренажеры")
+    else:
+        return render_template("train.html", prof=0, par="Научные симуляторы")
+
+
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=8086)
