@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="width: 30%;margin-left: 35%;margin-top: 5%; background-color: rgb(168, 163, 212);padding: 30px; text-align: center;border-radius: 15px;">
+    <form action="" method="post" novalidate>
+        <h2 class="bg-danger" style="border-radius: 10px;">Аварийный доступ</h2>
+        <img src="{{ url_for('static', filename='img/embl.png') }}" alt="" style="box-shadow: 5px 5px 5px rgb(108, 103, 132) ;">
+    {{ form.hidden_tag() }}
+    <p>
+        <h4 style="margin-bottom: 15px;">{{ form.astro_id.label }}</h4>
+        {{ form.astro_id(class="form-control") }}<br>
+        {% for error in form.astro_id.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        <h4 style="margin-bottom: 15px;">{{ form.astro_password.label }}</h4>
+        {{ form.astro_password(class="form-control", type="password") }}<br>
+        {% for error in form.astro_password.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    <p>
+        <h4 style="margin-bottom: 15px;">{{ form.cap_id.label }}</h4>
+        {{ form.cap_id(class="form-control") }}<br>
+        {% for error in form.cap_id.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        <h4 style="margin-bottom: 15px;">{{ form.cap_password.label }}</h4>      
+        {{ form.cap_password(class="form-control", type="password") }}<br>
+    {% for error in form.cap_password.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+    </form>
+</div>
+{% endblock %}

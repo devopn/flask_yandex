@@ -1,6 +1,20 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms.validators import DataRequired
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
+
+class LoginForm(FlaskForm):
+    astro_id = StringField('id астронавта', validators=[DataRequired()])
+    astro_password = PasswordField('пароль астронавта', validators=[DataRequired()])
+
+    cap_id = StringField('id капитана', validators=[DataRequired()])
+    cap_password = PasswordField('пароль капитана', validators=[DataRequired()])
+
+    submit = SubmitField("Доступ")
+
 
 @app.route("/")
 def index():
@@ -61,6 +75,13 @@ def list_prof(listT):
         return render_template("prof.html", list=listT)
     else:
         return "<b style='font-size:100px;'>BAD PARAMETER<b>"
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        return redirect("/login")
+    return render_template("login.html", title="Аварийный досутп",form=form)
 
 
 if __name__ == "__main__":
